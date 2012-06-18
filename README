@@ -1,0 +1,53 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4104
+
+Gdbmgr supports a user-controllable multiple-tiled window interface to gdb, and does not need any external scripting support such as perl or python.  Try out the tutorial -- it contains seven examples with detailed instructions on how to compile the example code, run it, and use gdbmgr with it.
+
+Using gdbgmgr is straightforward; you may start gdbmgr up from a running vim or, if you take the suggestion (:help gdbmgr-suggest), then attempting editing a program&#039s binary will bring up gdbmgr with that program loaded.
+
+  :DI programname...starts up gdbgmr with the given programname
+  :DR [args]..............runs the program (with optional arguments)
+  :DQ........................quit gdbmgr
+
+Standard Windows:
+By default at startup you&#039ll have seven tiled windows in a tab:
+  Netrw................: useful for bringing source code into the Source window and setting breakpoints and examining variables
+  Messages........: shows messages issued by gdb
+  Function Stack..: shows current function stack
+  Source Window.: shows current source code
+  Expr..................: enter expressions to be evaluated (ie. shows variable values)
+  Breakpt.............: shows list of breakpoints
+  Watchpoint........: shows list of watchpoints
+
+Optional Windows:
+Other available gdbmgr windows include:
+  BufExplorer..: the buffer explorer shows its output here (see vimscript#42) - thanks to Jeff Lanzarotta for including some interface code!
+  Commands..: enter commands to gdb via this window.  This window is stacked with the Source Window; ie. when you run your program, the commands window is displayed instead of the Source Window.
+  Tags............: shows CtagExpl or HdrTag output (tags, hdrtags)
+  Threads......: shows the results of gdb&#039s \"info threads\" command
+
+Foreign Apps:
+  Gdbmgr provides an interface to various \"foreign apps\"; ie. vimscripts that are external to gdbmgr itself.  Currently, gdbmgr provides interfaces to:
+  bufexplorer
+  CtagExpl
+  Hdrtag
+  netrw   (built-in interface)
+
+Installing gdbmgr:
+Gdbmgr does not require perl, python, or any other external scripting support.  However, it does need to have forkpty() support compiled in; you can get this by configuring your vim to support perl, python, or modify vim&#039s Makefile with EXTRA_LIBS = -lutil. 
+
+Read :help gdbmgr-install   for information on how to get your vim configured and compiled for gdbmgr.
+Read :help gdbmgr-tutorial  to learn many of the details of using gdbmgr.  Examples are included!
+
+Supported:
+stepping - continue
+examining variable values (with ballooneval, simply point the mouse at the variable name in the source code)
+breakpoints
+watchpoints
+function stack
+examining core dumps
+multiple-file source code programs supported
+
+See gdbmgr's online documentation and examples at http://www.drchip.org/astronaut/vim/doc/gdbmgr.txt.html .
+
+(alpha/beta version available at http://www.drchip.org/astronaut/vim/index.html#GDBMGR)
+
