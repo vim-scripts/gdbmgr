@@ -3436,7 +3436,10 @@ fun! s:GdbMgrSend(id,tgtfunc,...)
   " initialize GdbMgr
   elseif a:tgtfunc == "gmInit"
 "   call Decho("initializing GdbMgr: libcall'ing gdbmgr.so<".a:tgtfunc.">")
-   let response = libcall("gdbmgr.so",a:tgtfunc," ")
+   if !exists("g:gdbmgr_gdb_exe")
+      let g:gdbmgr_gdb_exe= "gdb"
+   endif
+   let response = libcall("gdbmgr.so",a:tgtfunc,g:gdbmgr_gdb_exe)
    call s:gdbmgr_registry_{t:gdbmgrtab}["M"].Update(response)
  
   else
