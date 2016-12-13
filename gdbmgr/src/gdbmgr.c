@@ -97,7 +97,7 @@ else if(pid == 0) { /* child process */
 	/* Will now exec gdb, thereby using it as the child process.
 	 */
 	Dprintf((fp,"(child) about to execlp \"gdb --annotate=3\"\n"));
-	if(execlp("gdb","gdb","--annotate=3",(char *) NULL) < 0) {
+	if(execlp(gdbcmd,gdbcmd,"--annotate=3",(char *) NULL) < 0) {
 		sprintf(gdbmgr->gdbmgrbuf,"***error*** %s",strerror(errno));
 		Rdbg((fp,"gmInit <%s> : (child) badexec",gdbmgr->gdbmgrbuf));
 		return gdbmgr->gdbmgrbuf;
